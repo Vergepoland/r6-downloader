@@ -80,7 +80,7 @@ dotnet --version | findstr /C:"8.0"
 if errorlevel 1 (
   start https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-8.0.400-windows-x64-installer
   cls
-  echo Could not find .NET 8 SDK, please download it and restart the downloader. Help posts will be deleted about this issue.
+  echo Could not find .NET 8 SDK, please download it and restart the downloader.
   dotnet --version
   dotnet --list-runtimes
   dotnet --list-sdks
@@ -114,7 +114,7 @@ if errorlevel 1 (
 
   :DepotCheck
     if exist "Resources\DepotDownloader.dll" (
-      goto PlazaCheck
+      goto CracksCheck
     ) else (
       goto DepotDownloader
     )
@@ -134,26 +134,26 @@ if errorlevel 1 (
     goto DepotCheck
   
 
-:PlazaCheck
-    if exist "Resources\Plazas" (
+:CracksCheck
+    if exist "Resources\Cracks" (
       goto cmdCheck 
     ) else (
-      goto GetPlaza
+      goto GetCracks
     )
-    goto PlazaCheck
+    goto CracksCheck
 
-  :GetPlaza
+  :GetCracks
     cls
     MODE 79,20
     echo -------------------------------------------------------------------------------
-    echo                          Downloading Plaza Bypass...
+    echo                          Downloading Cracks...
     echo -------------------------------------------------------------------------------
-    curl -L  "https://github.com/SlejmUr/Manifest_Tool_TB/raw/main/Plazas.zip" --ssl-no-revoke --output plazas.zip
+    curl -L  "https://github.com/Vergepoland/r6_downloader_dump/raw/main/Cracks.zip" --ssl-no-revoke --output Cracks.zip
     ::Extract
-    for %%I in ("plazas.zip") do (
-    "Resources\7z.exe" x -y -o"Resources\Plazas" "%%I" -aoa && del %%I
+    for %%I in ("Cracks.zip") do (
+    "Resources\7z.exe" x -y -o"Resources\Cracks" "%%I" -aoa && del %%I
     )
-    goto PlazaCheck
+    goto CracksCheck
 
   :cmdCheck
     if exist "Resources\cmdmenusel.exe" (
@@ -220,7 +220,7 @@ echo.
 echo QR Code: %useqr% (default is no) (0 is no, 1 is yes)
 echo Max servers: %maxservers_and_downloads% (default is 20)
 echo.
-Resources\cmdMenuSel f870 "  <- Back to Main Menu" "  Set use QR" "  Set more download speed"
+Resources\cmdMenuSel f870 "  <- Back to Main Menu" "  Use QR code to log in" "  Set a faster download speed"
 if %ERRORLEVEL% == 1 goto mainmenu
 if %ERRORLEVEL% == 2 (
   if %useqr% == 1 (
@@ -303,7 +303,7 @@ Title Downloading Vanilla...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8358812283631269928 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S0_Vanilla" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 3893422760579204530 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S0_Vanilla" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_BO Downloads\Y1S0_Vanilla
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y1S0_Vanilla
 goto downloadcomplete
 
 :blackice
@@ -312,7 +312,7 @@ Title Downloading Black Ice...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 5188997148801516344 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S1_BlackIce" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 7932785808040895147 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S1_BlackIce" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_BO Downloads\Y1S1_BlackIce
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y1S1_BlackIce
 goto downloadcomplete
 
 :dustline
@@ -321,7 +321,7 @@ Title Downloading Dust Line...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 2303064029242396590 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S2_DustLine" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 2206497318678061176 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S2_DustLine" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_BO Downloads\Y1S2_DustLine
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y1S2_DustLine
 goto downloadcomplete
 
 :skullrain
@@ -330,7 +330,7 @@ Title Downloading Skull Rain...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 5819137024728546741 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S3_SkullRain" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 5851804596427790505 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S3_SkullRain" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_BO Downloads\Y1S3_SkullRain
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y1S3_SkullRain
 goto downloadcomplete
 
 :redcrow
@@ -339,7 +339,7 @@ Title Downloading Red Crow...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 3576607363557872807 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S4_RedCrow" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 8569920171217002292 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S4_RedCrow" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_BO Downloads\Y1S4_RedCrow
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y1S4_RedCrow
 goto downloadcomplete
 
 :velvetshell
@@ -348,7 +348,7 @@ Title Downloading Velvet Shell...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 2248734317261478192 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S1_VelvetShell" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 8006071763917433748 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S1_VelvetShell" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y2S1_VelvetShell
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y2S1_VelvetShell
 goto downloadcomplete
 
 :health
@@ -357,7 +357,7 @@ Title Downloading Health...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 5875987479498297665 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S2_Health" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 708773000306432190 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S2_Health" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y2S2_Health
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y2S2_Health
 goto downloadcomplete
 
 :bloodorchid
@@ -366,7 +366,7 @@ Title Downloading Blood Orchid...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 6708129824495912434 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S3_BloodOrchid" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1613631671988840841 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S3_BloodOrchid" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y2S3_BloodOrchid
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y2S3_BloodOrchid
 goto downloadcomplete
 
 :whitenoise
@@ -376,7 +376,7 @@ Title Downloading White Noise...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8748734086032257441 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S4_WhiteNoise" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 4221297486420648079 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S4_WhiteNoise" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y2S4_WhiteNoise
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y2S4_WhiteNoise
 goto downloadcomplete
 
 :chimera
@@ -386,7 +386,7 @@ Title Downloading Chimera...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 5071357104726974256 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S1_Chimera" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 4701787239566783972 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S1_Chimera" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y3S1_Chimera
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y3S1_Chimera
 goto downloadcomplete
 
 :parabellum
@@ -396,7 +396,7 @@ Title Downloading Para Bellum...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 6507886921175556869 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S2_ParaBellum" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 8765715607275074515 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S2_ParaBellum" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y3S2_ParaBellum
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y3S2_ParaBellum
 goto downloadcomplete
 
 :grimsky
@@ -406,7 +406,7 @@ Title Downloading Grim Sky...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 5562094852451837435 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S3_GrimSky" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 7781202564071310413 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S3_GrimSky" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y3S3_GrimSky
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y3S3_GrimSky
 goto downloadcomplete
 
 :windbastion
@@ -416,7 +416,7 @@ Title Downloading Wind Bastion...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 6502258854032233436 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S4_WindBastion" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 7659555540733025386 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S4_WindBastion" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y3S4_WindBastion
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y3S4_WindBastion
 goto downloadcomplete
 
 :burnthorizon
@@ -426,7 +426,7 @@ Title Downloading Burnt Horizon...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8356277316976403078 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S1_BurntHorizon" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 5935578581006804383 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S1_BurntHorizon" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y4S1_BurntHorizon
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y4S1_BurntHorizon
 goto downloadcomplete
 
 :phantomsight
@@ -436,7 +436,7 @@ Title Downloading Phantom Sight...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 693082837425613508 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S2_PhantomSight" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 5408324128694463720 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S2_PhantomSight" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y4S2_PhantomSight
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y4S2_PhantomSight
 goto downloadcomplete
 
 :emberrise
@@ -446,7 +446,7 @@ Title Downloading Ember Rise...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 3546781236735558235 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S3_EmberRise" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 7869081741739849703 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S3_EmberRise" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y4S3_EmberRise
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y4S3_EmberRise
 goto downloadcomplete
 
 :shiftingtides
@@ -456,7 +456,7 @@ Title Downloading Shifting Tides...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 299124516841461614 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S4_ShiftingTides" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1842268638395240106 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S4_ShiftingTides" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y4S4_ShiftingTides
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y4S4_ShiftingTides
 goto downloadcomplete
 
 :voidedge
@@ -466,7 +466,7 @@ Title Downloading Void Edge...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4736360397583523381 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S1_VoidEdge" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 6296533808765702678 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S1_VoidEdge" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y5S1_VoidEdge
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y5S1_VoidEdge
 goto downloadcomplete
 
 :steelwave
@@ -476,7 +476,7 @@ Title Downloading Steel Wave...
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4367817844736324940 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S2_SteelWave" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 893971391196952070 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S2_SteelWave" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\PLAZA_NEW Downloads\Y5S2_SteelWave
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y5S2_SteelWave
 goto downloadcomplete
 
 :shadowlegacy
@@ -490,7 +490,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 85893637567200342 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S3_ShadowLegacy"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 3089981610366186823 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S3_ShadowLegacy" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\LumaPlay Downloads\Y5S3_ShadowLegacy /s
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y5S3_ShadowLegacy /s
 goto downloadcomplete
 
 :neondawn
@@ -504,7 +504,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4713320084981112320 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S4_RoadToSI_AW"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 3711873929777458413 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S4_RoadToSI_AW" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\CPlay Downloads\Y5S4_RoadToSI_AW /s
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y5S4_RoadToSI_AW /s
 goto downloadcomplete
 
 :crimsonheist
@@ -517,7 +517,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 7890853311380514304 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S1_ToyRainbow"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 7485515457663576274 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S1_ToyRainbow" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\CPlay Downloads\Y6S1_ToyRainbow /s
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y6S1_ToyRainbow /s
 goto downloadcomplete
 
 :northstar
@@ -536,7 +536,7 @@ if exist "Downloads\Y6S2_NorthStar" (
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8733653062998518164 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S2_NestDestruction"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 809542866761090243 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S2_NestDestruction" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\CPlay Downloads\Y6S2_NestDestruction /s
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y6S2_NestDestruction /s
 goto downloadcomplete
 
 :crystalguard
@@ -549,7 +549,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4859695099882698284 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S3_CrystalGuard"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 6526531850721822265 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S3_CrystalGuard" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\UPCR1 Downloads\Y6S3_CrystalGuard /s
+Robocopy Resources\Cracks\Y6S3 Downloads\Y6S3_CrystalGuard /s
 goto downloadcomplete
 
 :highcalibre
@@ -567,7 +567,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 2637055726475611418 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S4_Stadiums"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 8627214406801860013 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S4_Stadiums" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\UPCR2_NEW Downloads\Y6S4_Stadiums /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y6S4_Stadiums /s
 goto downloadcomplete
 
 :demonveil
@@ -580,7 +580,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8323869632165751287 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S1_TOKY"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 2178080523228113690 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S1_TOKY" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\UPCR2_NEW Downloads\Y7S1_TOKY /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S1_TOKY /s
 goto downloadcomplete
 
 :vectorglare
@@ -593,7 +593,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 1363132201391540345 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S2_MuteReboot"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 133280937611742404 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S2_MuteReboot" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\UPCR2_NEW Downloads\Y7S2_MuteReboot /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S2_MuteReboot /s
 goto downloadcomplete
 
 :brutalswarm
@@ -606,7 +606,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 6425223567680952075 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S3_DoctorSniper"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 5906302942203575464 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S3_DoctorSniper" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\UPCR2_NEW Downloads\Y7S3_DoctorSniper /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S3_DoctorSniper /s
 goto downloadcomplete
 
 :solarraid
@@ -619,7 +619,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4466027729495813039 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S4_SnowBrawl"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1819898955518120444 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S4_SnowBrawl" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\Y8SX Downloads\Y7S4_SnowBrawl /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S4_SnowBrawl /s
 goto downloadcomplete
 
 :commandingforce
@@ -631,7 +631,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 3050554908913191669 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S1_ToyRainbow3"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1575870740329742681 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S1_ToyRainbow3" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\Y8SX Downloads\Y8S1_ToyRainbow3 /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y8S1_ToyRainbow3 /s
 goto downloadcomplete
 
 
@@ -644,7 +644,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 3558972082517836520 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S2_DreadFactor"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1575870740329742681 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S2_DreadFactor" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\Y8SX Downloads\Y8S2_DreadFactor /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y8S2_DreadFactor /s
 goto downloadcomplete
 
 :heavymettle
@@ -656,7 +656,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 2068160275622519212 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S3_HeavyMettle"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 3005637025719884427 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S3_HeavyMettle" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\Y8SX Downloads\Y8S3_HeavyMettle /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y8S3_HeavyMettle /s
 goto downloadcomplete
 
 :deepfreeze
@@ -668,7 +668,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 7646647065987620875 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S4_DeepFreeze"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 4957295777170965935 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S4_DeepFreeze" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\Y8SX Downloads\Y8S4_DeepFreeze /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y8S4_DeepFreeze /s
 goto downloadcomplete
 
 :deadlyomen
@@ -680,7 +680,7 @@ pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 1959067516419454682 -username %username% %usecommand% -remember-password -dir "Downloads\Y9S1_DeadlyOmen"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1140469899661941149 -username %username% %usecommand% -remember-password -dir "Downloads\Y9S1_DeadlyOmen" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\Y8SX Downloads\Y9S1_DeadlyOmen /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y9S1_DeadlyOmen /s
 goto downloadcomplete
 
 :skurus
@@ -961,7 +961,7 @@ echo Make sure you starting RainbowSix.bat not the normal RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377238 -manifest 4977529482832011357 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S2_DreadFactor" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\Y8SX Downloads\Y8S2_DreadFactor /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y8S2_DreadFactor /s
 goto downloadcomplete
 
 :rusheavymettle
@@ -972,7 +972,7 @@ echo Make sure you starting RainbowSix.bat not the normal RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377238 -manifest 2579928666708989224 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S3_HeavyMettle" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\Y8SX Downloads\Y8S3_HeavyMettle /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y8S3_HeavyMettle /s
 goto downloadcomplete
 
 :rusdeepfreeze
@@ -983,7 +983,7 @@ echo Make sure you starting RainbowSix.bat not the normal RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377238 -manifest 8339919149418587132 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S4_DeepFreeze" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\Y8SX Downloads\Y8S4_DeepFreeze /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y8S4_DeepFreeze /s
 goto downloadcomplete
 
 :rusdeadlyomen
@@ -994,7 +994,7 @@ echo Make sure you starting RainbowSix.bat not the normal RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377238 -manifest 1619182300337183882 -username %username% %usecommand% -remember-password -dir "Downloads\Y9S1_DeadlyOmen" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Plazas\Y8SX Downloads\Y9S1_DeadlyOmen /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y9S1_DeadlyOmen /s
 goto downloadcomplete
 
 
