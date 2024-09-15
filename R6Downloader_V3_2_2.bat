@@ -78,7 +78,7 @@ goto dotnetchecktwo
 :dotnetchecktwo
 dotnet --version | findstr /C:"8.0"
 if errorlevel 1 (
-  start https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-8.0.400-windows-x64-installer
+  start https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.401-windows-x64-installer
   cls
   echo Could not find .NET 8 SDK, please download it and restart the downloader.
   dotnet --version
@@ -114,7 +114,7 @@ if errorlevel 1 (
 
   :DepotCheck
     if exist "Resources\DepotDownloader.dll" (
-      goto CracksCheck
+      goto BypassCheck
     ) else (
       goto DepotDownloader
     )
@@ -126,7 +126,7 @@ if errorlevel 1 (
     echo -------------------------------------------------------------------------------
     echo                        Downloading DepotDownloader...
     echo -------------------------------------------------------------------------------
-    curl -L  "https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.6.0/DepotDownloader-framework.zip" --ssl-no-revoke --output depot.zip
+    curl -L  "https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.7.1/DepotDownloader-framework.zip" --ssl-no-revoke --output depot.zip
     ::Extract
     for %%I in ("depot.zip") do (
       "Resources\7z.exe" x -y -o"Resources" "%%I" -aoa && del %%I
@@ -134,26 +134,26 @@ if errorlevel 1 (
     goto DepotCheck
   
 
-:CracksCheck
+:BypassCheck
     if exist "Resources\Cracks" (
       goto cmdCheck 
     ) else (
-      goto GetCracks
+      goto GetBypass
     )
-    goto CracksCheck
+    goto BypassCheck
 
-  :GetCracks
+  :GetBypass
     cls
     MODE 79,20
     echo -------------------------------------------------------------------------------
-    echo                          Downloading Cracks...
+    echo                          Downloading Bypass...
     echo -------------------------------------------------------------------------------
     curl -L  "https://github.com/Vergepoland/r6_downloader_dump/raw/main/Cracks.zip" --ssl-no-revoke --output Cracks.zip
     ::Extract
     for %%I in ("Cracks.zip") do (
     "Resources\7z.exe" x -y -o"Resources\Cracks" "%%I" -aoa && del %%I
     )
-    goto CracksCheck
+    goto BypassCheck
 
   :cmdCheck
     if exist "Resources\cmdmenusel.exe" (
@@ -187,7 +187,7 @@ echo ---------------------------------------------------------------------------
 echo.
 timeout /T 10 >nul | echo 			Please wait 10 sec to continue^!
 Resources\cmdMenuSel f870 "                                    Continue" ""
-if %ERRORLEVEL% == 1 goto guidefaq
+if %ERRORLEVEL% == 1 goto mainmenu
 
 
 
@@ -202,14 +202,16 @@ echo ^|    You MUST have a copy of Siege on Steam to use the downloader.        
 echo ---------------------------------------------------------------------------------
 echo ^|                Click on the option you would like to select.                  ^|
 echo ---------------------------------------------------------------------------------
-echo ^|   NOTE: The Sku RUS Downloader is meant for people with missing exe files.    ^|
+echo ^|  The Sku RUS Downloader is meant for those with post-soviet region accounts   ^|
+echo ^|  You can check in "account region check" here if you need to use Sku RUS.     ^| 
 echo ---------------------------------------------------------------------------------
 echo.
-Resources\cmdMenuSel f870 "  Game Downloader" "  Sku RUS Downloader" "  Installation Guide and FAQ" "  More Settings"
+Resources\cmdMenuSel f870 "  Game Downloader" "  Sku RUS Downloader" "  Installation Guide and FAQ" "  More Settings" "  Account Region Check"
 if %ERRORLEVEL% == 1 goto siegemenu
 if %ERRORLEVEL% == 2 goto skurus
 if %ERRORLEVEL% == 3 goto guidefaq
 if %ERRORLEVEL% == 4 goto moresettings
+if %ERRORLEVEL% == 5 goto accountregioncheck
 
 
 :moresettings
@@ -217,8 +219,8 @@ Title Rainbow Six Siege Downloader
 cls
 MODE 81,18
 echo.
-echo QR Code: %useqr% (default is no) (0 is no, 1 is yes)
-echo Max servers: %maxservers_and_downloads% (default is 20)
+echo QR Code: %useqr% (default = 0) (0 = no) (1 = yes)
+echo Max servers: %maxservers_and_downloads% (default = 20)
 echo.
 Resources\cmdMenuSel f870 "  <- Back to Main Menu" "  Use QR code to log in" "  Set a faster download speed"
 if %ERRORLEVEL% == 1 goto mainmenu
@@ -246,6 +248,15 @@ if %useqr% == 1 (
   set usecommand=""
 )
 goto moresettings
+
+:accountregioncheck
+start https://store.steampowered.com/account/
+MODE 81,18
+echo  Ensure that you're logged into the account you are using to download siege with.
+echo  If your account is in a region thats listed below, use the Sku RUS option.
+echo  Armenia ^| Azerbaijan ^| Belarus ^| Ukraine ^| Kazakhstan 
+echo  Russia ^| Uzbekistan ^| Tajikistan ^| Moldova ^| Georgia
+Resources\cmdMenuSel f870 "  <- Back to Main Menu" 
 
 
 
@@ -482,8 +493,7 @@ goto downloadcomplete
 :shadowlegacy
 MODE 120,50
 Title Downloading Shadow Legacy...
-echo THIS version is using Lumaplay^!
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe and Lumaplay.Exe^!
+echo Launch the game using RainbowSix.bat instead of RainbowSix.exe and Lumaplay.exe^!
 echo This version using After chanka update ^!
 pause
 
@@ -496,53 +506,45 @@ goto downloadcomplete
 :neondawn
 MODE 120,50
 Title Downloading Neon Dawn...
-echo THIS version is using CPlay^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 echo This version using After zofia update ^!
 pause
 
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4713320084981112320 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S4_RoadToSI_AW"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 3711873929777458413 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S4_RoadToSI_AW" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4713320084981112320 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S4_NeonDawn"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 3711873929777458413 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S4_NeonDawn" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y5S4_RoadToSI_AW /s
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y5S4_NeonDawn /s
 goto downloadcomplete
 
 :crimsonheist
 MODE 120,50
 Title Downloading Crimson Heist...
-echo THIS version is using CPlay^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 pause
 
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 7890853311380514304 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S1_ToyRainbow"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 7485515457663576274 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S1_ToyRainbow" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 7890853311380514304 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S1_CrimsonHeist"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 7485515457663576274 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S1_CrimsonHeist" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y6S1_ToyRainbow /s
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y6S1_CrimsonHeist /s
 goto downloadcomplete
 
 :northstar
 MODE 120,50
 Title Downloading North Star...
-echo THIS version is using CPlay^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 echo This version using After chanka update ^!
 echo Nest Destruction event!
-echo Y6S2_NorthStar ^=^> Y6S2_NestDestruction
-if exist "Downloads\Y6S2_NorthStar" (
-	echo Older version of North Star ^! Please delete it^!
-	pause
 )
 
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8733653062998518164 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S2_NestDestruction"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 809542866761090243 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S2_NestDestruction" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8733653062998518164 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S2_NorthStar"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 809542866761090243 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S2_NorthStar" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y6S2_NestDestruction /s
+Robocopy Resources\Cracks\Y1SX-Y6S2 Downloads\Y6S2_NorthStar /s
 goto downloadcomplete
 
 :crystalguard
 MODE 120,50
 Title Downloading Crystal Guard...
-echo THIS version is using UPCR1^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 pause
 
@@ -555,90 +557,79 @@ goto downloadcomplete
 :highcalibre
 MODE 120,50
 Title Downloading High Calibre..
-echo THIS version is using UPCR2_NEW^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
-echo Y6S4_HighCalibre ^=^> Y6S4_Stadiums
-if exist "Downloads\Y6S4_HighCalibre" (
-	echo Older version of High Calibre ^! Please delete it^!
-	pause
 )
 pause
 
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 2637055726475611418 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S4_Stadiums"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 8627214406801860013 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S4_Stadiums" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 2637055726475611418 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S4_HighCalibre"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 8627214406801860013 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S4_HighCalibre" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y6S4_Stadiums /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y6S4_HighCalibre /s
 goto downloadcomplete
 
 :demonveil
 MODE 120,50
 Title Downloading Demon Veil...
-echo THIS version is using UPCR2_NEW^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 pause
 
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8323869632165751287 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S1_TOKY"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 2178080523228113690 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S1_TOKY" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8323869632165751287 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S1_DemonVeil"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 2178080523228113690 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S1_DemonVeil" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S1_TOKY /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S1_DemonVeil /s
 goto downloadcomplete
 
 :vectorglare
 MODE 120,50
 Title Downloading Vector Glare...
-echo THIS version is using UPCR2_NEW^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 pause
 
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 1363132201391540345 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S2_MuteReboot"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 133280937611742404 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S2_MuteReboot" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 1363132201391540345 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S2_VectorGlare"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 133280937611742404 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S2_VectorGlare" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S2_MuteReboot /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S2_VectorGlare /s
 goto downloadcomplete
 
 :brutalswarm
 MODE 120,50
 Title Downloading Brutal Swarm...
-echo THIS version is using UPCR2_NEW^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 pause
 
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 6425223567680952075 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S3_DoctorSniper"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 5906302942203575464 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S3_DoctorSniper" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 6425223567680952075 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S3_BrutalSwarm"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 5906302942203575464 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S3_BrutalSwarm" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S3_DoctorSniper /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S3_BrutalSwarm /s
 goto downloadcomplete
 
 :solarraid
 MODE 120,50
 Title Downloading Solar Raid...
-echo THIS version is using Y8SX^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 pause
 
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4466027729495813039 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S4_SnowBrawl"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1819898955518120444 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S4_SnowBrawl" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4466027729495813039 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S4_SolarRaid"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1819898955518120444 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S4_SolarRaid" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S4_SnowBrawl /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y7S4_SolarRaid /s
 goto downloadcomplete
 
 :commandingforce
 MODE 120,50
 Title Downloading Commanding Force ...
-echo THIS version is using Y8SX^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 pause
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 3050554908913191669 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S1_ToyRainbow3"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
-dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1575870740329742681 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S1_ToyRainbow3" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 3050554908913191669 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S1_CommandingForce"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1575870740329742681 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S1_CommandingForce" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
-Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y8S1_ToyRainbow3 /s
+Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y8S1_CommandingForce /s
 goto downloadcomplete
 
 
 :dreadfactor
 MODE 120,50
 Title Downloading Dread Factor ...
-echo THIS version is using Y8SX^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 3558972082517836520 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S2_DreadFactor"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
@@ -650,7 +641,6 @@ goto downloadcomplete
 :heavymettle
 MODE 120,50
 Title Downloading Heavy Mettle ...
-echo THIS version is using Y8SX^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 2068160275622519212 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S3_HeavyMettle"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
@@ -662,7 +652,6 @@ goto downloadcomplete
 :deepfreeze
 MODE 120,50
 Title Downloading Deep Freeze ...
-echo THIS version is using Y8SX^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 7646647065987620875 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S4_DeepFreeze"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
@@ -674,7 +663,6 @@ goto downloadcomplete
 :deadlyomen
 MODE 120,50
 Title Downloading Deadly Omen ...
-echo THIS version is using Y8SX^!
 echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 1959067516419454682 -username %username% %usecommand% -remember-password -dir "Downloads\Y9S1_DeadlyOmen"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
