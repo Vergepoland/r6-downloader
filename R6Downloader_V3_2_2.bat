@@ -202,8 +202,8 @@ echo ^|    You MUST have a copy of Siege on Steam to use the downloader.        
 echo ---------------------------------------------------------------------------------
 echo ^|                Click on the option you would like to select.                  ^|
 echo ---------------------------------------------------------------------------------
-echo ^|  The Sku RUS Downloader is meant for those with post-soviet region accounts   ^|
-echo ^|  You can check in "account region check" here if you need to use Sku RUS.     ^| 
+echo ^|  The Sku RUS option is meant for those with post-soviet region accounts        ^|
+echo ^| You can check in "account region check" if you need to use the Sku RUS option. ^| 
 echo ---------------------------------------------------------------------------------
 echo.
 Resources\cmdMenuSel f870 "  Game Downloader" "  Sku RUS Downloader" "  Installation Guide and FAQ" "  More Settings" "  Account Region Check"
@@ -256,7 +256,7 @@ echo  Ensure that you're logged into the account you are using to download siege
 echo  If your account is in a region thats listed below, use the Sku RUS option.
 echo  Armenia ^| Azerbaijan ^| Belarus ^| Ukraine ^| Kazakhstan 
 echo  Russia ^| Uzbekistan ^| Tajikistan ^| Moldova ^| Georgia
-Resources\cmdMenuSel f870 "  <- Back to Main Menu" 
+Resources\cmdMenuSel f870 "  <- Back to Main Menu"  "  Open Account Checker"
 
 
 
@@ -307,6 +307,7 @@ if %ERRORLEVEL% == 33 goto dreadfactor
 if %ERRORLEVEL% == 34 goto heavymettle
 if %ERRORLEVEL% == 35 goto deepfreeze
 if %ERRORLEVEL% == 36 goto deadlyomen
+if %ERRORLEVEL% == 37 goto newblood
                                      
 :vanilla
 MODE 120,50
@@ -338,6 +339,8 @@ goto downloadcomplete
 :skullrain
 MODE 120,50
 Title Downloading Skull Rain...
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
+pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 5819137024728546741 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S3_SkullRain" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 5851804596427790505 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S3_SkullRain" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -347,6 +350,8 @@ goto downloadcomplete
 :redcrow
 MODE 120,50
 Title Downloading Red Crow...
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
+pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 3576607363557872807 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S4_RedCrow" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 8569920171217002292 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S4_RedCrow" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -356,6 +361,8 @@ goto downloadcomplete
 :velvetshell
 MODE 120,50
 Title Downloading Velvet Shell...
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
+pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 2248734317261478192 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S1_VelvetShell" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 8006071763917433748 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S1_VelvetShell" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -365,6 +372,8 @@ goto downloadcomplete
 :health
 MODE 120,50
 Title Downloading Health...
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
+pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 5875987479498297665 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S2_Health" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 708773000306432190 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S2_Health" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -374,6 +383,8 @@ goto downloadcomplete
 :bloodorchid
 MODE 120,50
 Title Downloading Blood Orchid...
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
+pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 6708129824495912434 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S3_BloodOrchid" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1613631671988840841 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S3_BloodOrchid" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -383,7 +394,8 @@ goto downloadcomplete
 :whitenoise
 MODE 120,50
 Title Downloading White Noise...
-
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
+pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8748734086032257441 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S4_WhiteNoise" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 4221297486420648079 -username %username% %usecommand% -remember-password -dir "Downloads\Y2S4_WhiteNoise" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -393,7 +405,7 @@ goto downloadcomplete
 :chimera
 MODE 120,50
 Title Downloading Chimera...
-
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 5071357104726974256 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S1_Chimera" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 4701787239566783972 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S1_Chimera" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -403,7 +415,7 @@ goto downloadcomplete
 :parabellum
 MODE 120,50
 Title Downloading Para Bellum...
-
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 6507886921175556869 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S2_ParaBellum" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 8765715607275074515 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S2_ParaBellum" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -413,7 +425,7 @@ goto downloadcomplete
 :grimsky
 MODE 120,50
 Title Downloading Grim Sky...
-
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 5562094852451837435 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S3_GrimSky" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 7781202564071310413 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S3_GrimSky" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -423,7 +435,7 @@ goto downloadcomplete
 :windbastion
 MODE 120,50
 Title Downloading Wind Bastion...
-
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 6502258854032233436 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S4_WindBastion" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 7659555540733025386 -username %username% %usecommand% -remember-password -dir "Downloads\Y3S4_WindBastion" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -433,7 +445,7 @@ goto downloadcomplete
 :burnthorizon
 MODE 120,50
 Title Downloading Burnt Horizon...
-
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8356277316976403078 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S1_BurntHorizon" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 5935578581006804383 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S1_BurntHorizon" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -443,7 +455,7 @@ goto downloadcomplete
 :phantomsight
 MODE 120,50
 Title Downloading Phantom Sight...
-
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 693082837425613508 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S2_PhantomSight" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 5408324128694463720 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S2_PhantomSight" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -453,7 +465,7 @@ goto downloadcomplete
 :emberrise
 MODE 120,50
 Title Downloading Ember Rise...
-
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 3546781236735558235 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S3_EmberRise" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 7869081741739849703 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S3_EmberRise" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -463,7 +475,7 @@ goto downloadcomplete
 :shiftingtides
 MODE 120,50
 Title Downloading Shifting Tides...
-
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 299124516841461614 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S4_ShiftingTides" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1842268638395240106 -username %username% %usecommand% -remember-password -dir "Downloads\Y4S4_ShiftingTides" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -473,7 +485,7 @@ goto downloadcomplete
 :voidedge
 MODE 120,50
 Title Downloading Void Edge...
-
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4736360397583523381 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S1_VoidEdge" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 6296533808765702678 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S1_VoidEdge" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -483,7 +495,8 @@ goto downloadcomplete
 :steelwave
 MODE 120,50
 Title Downloading Steel Wave...
-
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
+pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4367817844736324940 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S2_SteelWave" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 893971391196952070 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S2_SteelWave" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -493,10 +506,9 @@ goto downloadcomplete
 :shadowlegacy
 MODE 120,50
 Title Downloading Shadow Legacy...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe and Lumaplay.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe and Lumaplay.exe^!
 echo This version using After chanka update ^!
 pause
-
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 85893637567200342 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S3_ShadowLegacy"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 3089981610366186823 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S3_ShadowLegacy" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -506,10 +518,9 @@ goto downloadcomplete
 :neondawn
 MODE 120,50
 Title Downloading Neon Dawn...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 echo This version using After zofia update ^!
 pause
-
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4713320084981112320 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S4_NeonDawn"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 3711873929777458413 -username %username% %usecommand% -remember-password -dir "Downloads\Y5S4_NeonDawn" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -519,9 +530,8 @@ goto downloadcomplete
 :crimsonheist
 MODE 120,50
 Title Downloading Crimson Heist...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
-
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 7890853311380514304 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S1_CrimsonHeist"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 7485515457663576274 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S1_CrimsonHeist" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -531,7 +541,7 @@ goto downloadcomplete
 :northstar
 MODE 120,50
 Title Downloading North Star...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 echo This version using After chanka update ^!
 echo Nest Destruction event!
 )
@@ -545,9 +555,8 @@ goto downloadcomplete
 :crystalguard
 MODE 120,50
 Title Downloading Crystal Guard...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
-
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4859695099882698284 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S3_CrystalGuard"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 6526531850721822265 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S3_CrystalGuard" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -557,10 +566,8 @@ goto downloadcomplete
 :highcalibre
 MODE 120,50
 Title Downloading High Calibre..
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
-)
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
-
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 2637055726475611418 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S4_HighCalibre"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 8627214406801860013 -username %username% %usecommand% -remember-password -dir "Downloads\Y6S4_HighCalibre" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -570,9 +577,8 @@ goto downloadcomplete
 :demonveil
 MODE 120,50
 Title Downloading Demon Veil...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
-
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8323869632165751287 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S1_DemonVeil"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 2178080523228113690 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S1_DemonVeil" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -582,9 +588,8 @@ goto downloadcomplete
 :vectorglare
 MODE 120,50
 Title Downloading Vector Glare...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
-
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 1363132201391540345 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S2_VectorGlare"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 133280937611742404 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S2_VectorGlare" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -594,9 +599,8 @@ goto downloadcomplete
 :brutalswarm
 MODE 120,50
 Title Downloading Brutal Swarm...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
-
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 6425223567680952075 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S3_BrutalSwarm"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 5906302942203575464 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S3_BrutalSwarm" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -606,9 +610,8 @@ goto downloadcomplete
 :solarraid
 MODE 120,50
 Title Downloading Solar Raid...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
-
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 4466027729495813039 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S4_SolarRaid"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1819898955518120444 -username %username% %usecommand% -remember-password -dir "Downloads\Y7S4_SolarRaid" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
@@ -618,7 +621,7 @@ goto downloadcomplete
 :commandingforce
 MODE 120,50
 Title Downloading Commanding Force ...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 3050554908913191669 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S1_CommandingForce"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1575870740329742681 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S1_CommandingForce" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
@@ -630,7 +633,7 @@ goto downloadcomplete
 :dreadfactor
 MODE 120,50
 Title Downloading Dread Factor ...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 3558972082517836520 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S2_DreadFactor"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1575870740329742681 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S2_DreadFactor" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
@@ -641,7 +644,7 @@ goto downloadcomplete
 :heavymettle
 MODE 120,50
 Title Downloading Heavy Mettle ...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 2068160275622519212 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S3_HeavyMettle"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 3005637025719884427 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S3_HeavyMettle" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
@@ -652,7 +655,7 @@ goto downloadcomplete
 :deepfreeze
 MODE 120,50
 Title Downloading Deep Freeze ...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 7646647065987620875 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S4_DeepFreeze"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 4957295777170965935 -username %username% %usecommand% -remember-password -dir "Downloads\Y8S4_DeepFreeze" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
@@ -663,13 +666,22 @@ goto downloadcomplete
 :deadlyomen
 MODE 120,50
 Title Downloading Deadly Omen ...
-echo Launch the game using RainbowSix.bat instead of RainbowSix.exe^!
+echo Launch the game using the RainbowSix.bat file instead of the RainbowSix.exe^!
 pause
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 1959067516419454682 -username %username% %usecommand% -remember-password -dir "Downloads\Y9S1_DeadlyOmen"  -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 1140469899661941149 -username %username% %usecommand% -remember-password -dir "Downloads\Y9S1_DeadlyOmen" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
 pause
 Robocopy Resources\Cracks\Y6S4-Y8SX Downloads\Y9S1_DeadlyOmen /s
 goto downloadcomplete
+
+:newblood
+MODE 120,50
+Title Downloading New Blood ...
+echo 
+pause
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 377237 -manifest 8358812283631269928 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S0_Vanilla" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+dotnet Resources\DepotDownloader.dll -app 359550 -depot 359551 -manifest 3893422760579204530 -username %username% %usecommand% -remember-password -dir "Downloads\Y1S0_Vanilla" -validate -max-servers %maxservers_and_downloads% -max-downloads %maxservers_and_downloads%
+pause
 
 :skurus
 Title Sku RUS Download
