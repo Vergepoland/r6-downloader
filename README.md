@@ -1,4 +1,2 @@
 # r6_downloader_dump
-● Downloader based off from slejmur OG r6 downloader
-
-● This repo is a dumping ground for files, all releases will still be on slejmurs repo: https://github.com/SlejmUr/Manifest_Tool_TB/
+● Downloader based off from Slejmur OG r6 downloader - Slejmur won't be updating his downloader, so any further updates will be made and updated here
