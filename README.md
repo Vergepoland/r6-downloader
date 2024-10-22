@@ -1,2 +1,6 @@
 # r6_downloader
-● Downloader based off from Slejmur OG r6 downloader - Slejmur won't be updating his downloader, so any further updates will be made by me and uploaded here
+● JOIN THE EUTM SERVER: https://discord.gg/pAhkyxmr7u
+
+● Downloader based off from Slejmur OG r6 downloader - all new updates will be posted here
+
+● Create an issue in Issues OR make a help post (in discord server) and tag me in it for issues related to my downloader 👍
