@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Create a bug report related to the downloader
 title: ''
 labels: Bug, Help wanted
 assignees: Vergepoland
