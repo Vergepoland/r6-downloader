@@ -21,7 +21,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: issue-reporduction-steps
+    id: attempted-fixes
     attributes:
       label: What have you tried to try to fix the bug?
       placeholder: 1. I have tried to...
