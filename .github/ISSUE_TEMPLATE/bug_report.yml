@@ -20,6 +20,13 @@ body:
       placeholder: Step 1. You need to...
     validations:
       required: true
+  - type: textarea
+    id: issue-reporduction-steps
+    attributes:
+      label: What have you tried to try to fix the bug?
+      placeholder: 1. I have tried to...
+    validations:
+      required: true
   - type: input
     id: version-used
     attributes:
