@@ -1,0 +1,36 @@
+name: Bug Report
+description: Report a Bug
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report a bug you have discovered with the downloader here below:
+  - type: textarea
+    id: describe-issue
+    attributes:
+      label: Describe the issue you have encountered:
+      placeholder: Download will not start / broken UI etc...
+    validations:
+      required: true
+  - type: textarea
+    id: issue-reporduction-steps
+    attributes:
+      label: How do you reproduce the bug?
+      placeholder: Step 1. You need to...
+    validations:
+      required: true
+  - type: input
+    id: version-used
+    attributes:
+      label: What downloader version are you using?
+      placeholder: e.g V3.3
+    validations:
+      required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Add any extra information related to the bug (not mandatory).
+    validations:
+      required: false
