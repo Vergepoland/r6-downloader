@@ -9,7 +9,7 @@ body:
   - type: textarea
     id: describe-issue
     attributes:
-      label: Describe the issue you have encountered:
+      label: Describe the issue you have encountered.
       placeholder: Download will not start / broken UI etc...
     validations:
       required: true
