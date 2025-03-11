@@ -7,5 +7,6 @@
 - .NET SDK (downloader version specifies what one is needed)
 - Antivirus exclusion (VERY IMPORTANT TO SET UP)
 
-#
-● Create an issue in Issues OR make a help post (in discord server) and tag me in it for issues related to this downloader 
+## Donations
+Looking to donate to keep this project going, and support new projects?
+Check out my Ko-fi link: https://ko-fi.com/verge_poland
