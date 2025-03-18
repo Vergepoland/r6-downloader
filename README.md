@@ -9,4 +9,4 @@
 
 ## Donations
 Looking to donate to keep this project going, and support new projects?
-Check out my Ko-fi link: https://ko-fi.com/verge_poland
+Consider donating here: https://ko-fi.com/verge_poland
