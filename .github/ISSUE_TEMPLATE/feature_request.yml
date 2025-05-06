@@ -10,14 +10,14 @@ body:
     id: feature-addition-or-change
     attributes:
       label: Describe below the new feature / change to an existing feature.
-      placeholder: - Implement a...  Change how...
+      placeholder: - Implement a... 
     validations:
       required: true
   - type: textarea
     id: benefits-of-change
     attributes:
       label: How will the new feature / change to the feature benefit using the downloader?
-      placeholder: By adding this feature, it will... By changing the feature, it should...
+      placeholder: By adding this feature, it will... 
     validations:
       required: true
   - type: textarea
