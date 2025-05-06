@@ -1,0 +1,30 @@
+name: Feature Request
+description: Suggest a change, or a new feature to the downloader
+labels: [New Feature] [Feature Change]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Leave below a new feature, or a change to an existing feature that should be implemented to the downloader:
+  - type: textarea
+    id: feature-addition-or-change
+    attributes:
+      label: Describe below the new feature / change to an existing feature.
+      placeholder: - Implement a...  Change how...
+    validations:
+      required: true
+  - type: textarea
+    id: benefits-of-change
+    attributes:
+      label: How will the new feature / change to the feature benefit using the downloader?
+      placeholder: By adding this feature, it will... By changing the feature, it should...
+    validations:
+      required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Add any extra information that may be benefitial.
+    validations:
+      required: false
+  
