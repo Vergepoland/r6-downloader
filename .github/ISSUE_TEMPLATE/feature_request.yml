@@ -10,7 +10,7 @@ body:
     id: feature-addition-or-change
     attributes:
       label: Describe below the new feature / change to an existing feature.
-      placeholder: - Implement a... 
+      placeholder: Implement a... 
     validations:
       required: true
   - type: textarea
