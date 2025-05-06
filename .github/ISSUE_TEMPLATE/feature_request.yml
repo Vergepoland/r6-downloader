@@ -1,6 +1,6 @@
 name: Feature Request
 description: Suggest a change, or a new feature to the downloader
-labels: [New Feature] [Feature Change]
+labels: New Feature,Feature Change
 body:
   - type: markdown
     attributes:
