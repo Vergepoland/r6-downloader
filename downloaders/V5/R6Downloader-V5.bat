@@ -861,7 +861,8 @@ if %ERRORLEVEL% == 4 goto ts-y5s2
 if %ERRORLEVEL% == 5 goto ts-y5s3
 if %ERRORLEVEL% == 6 goto ts-y4s3
 if %ERRORLEVEL% == 7 goto ts-y6s1
-if %ERRORLEVEL% == 8 goto ts-y10s2
+if %ERRORLEVEL% == 8 goto ts-y6s2
+if %ERRORLEVEL% == 9 goto ts-y10s2
 
 :ts-y3s4
 MODE 120,20
